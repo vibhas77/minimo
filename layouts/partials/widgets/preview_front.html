@@ -1,0 +1,27 @@
+{{- $defaultConfig := .Site.Data.config.default.widgets.recent_posts -}}
+{{- $configData := ( or .Site.Data.config.widgets.recent_posts $defaultConfig ) -}}
+{{- $lang := .Site.Language.Lang -}}
+{{- $config := ( ( index $configData $lang ) | default $configData ) -}}
+
+{{- $length := ( $config.length | default 5 ) -}}
+
+<section class='widget widget-recent_posts sep-after'>
+  {{ range ( first 1 ( where .Site.RegularPages "Type" "not in" $config.excludeTypes ) ) }}
+  <header>
+    <h2 class='title widget-title'>
+        <p>{{ .Title }}</p>
+    </h2>
+  </header>
+  {{ partial "entry/cover" . }}
+  <p>{{ .Summary }}</p>
+  <a href='{{ .Permalink | relURL }}'>
+    Read More >>
+  </a>
+  {{ end }}
+
+  <!-- <ul class='list'>
+  {{ range ( first 1 ( where .Site.RegularPages "Type" "not in" $config.excludeTypes ) ) }}
+    {{ .Render "li" }}
+  {{ end }}
+  </ul> -->
+</section>
