@@ -11,6 +11,7 @@
     <h2 class='title widget-title'>
         <p>{{ .Title }}</p>
     </h2>
+    {{ partial "entry/meta" . }}
   </header>
   {{ partial "entry/cover" . }}
   <p>{{ .Summary }}</p>
