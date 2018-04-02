@@ -5,11 +5,11 @@
 
 {{- $length := ( $config.length | default 5 ) -}}
 
-<section class='widget widget-recent_posts sep-after'>
-  {{ range ( first 1 ( where .Site.RegularPages "Type" "not in" $config.excludeTypes ) ) }}
-  <header>
-    <h2 class='title widget-title'>
-        <p>{{ .Title }}</p>
+<section class='widget widget-recent_posts'>
+  {{ range ( first 2 ( where .Site.RegularPages "Type" "not in" $config.excludeTypes ) ) }}
+  <div class="sep-after"><header class="header entry-header">
+    <h2 class='title widget-title' style="margin-bottom: 0;">
+        {{ .Title }}
     </h2>
     {{ partial "entry/meta" . }}
   </header>
@@ -17,7 +17,7 @@
   <p>{{ .Summary }}</p>
   <a href='{{ .Permalink | relURL }}'>
     Read More >>
-  </a>
+  </a></div>
   {{ end }}
 
   <!-- <ul class='list'>

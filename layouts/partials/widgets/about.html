@@ -6,10 +6,9 @@
 <section class='widget widget-about sep-after'>
   <header>
     {{ with $config.logo }}
+    <a href='{{ $.Site.BaseURL | relURL }}'>
     <div class='logo'>
-      <a href='{{ $.Site.BaseURL | relURL }}'>
         <img src='{{ . | relURL }}'>
-      </a>
     </div>
     {{ end }}
     <h2 class='title site-title '>
@@ -26,6 +25,7 @@
       {{- .Site.Params.info.description -}}
     {{ end }}
     </div>
+  </a>
   </header>
 
 </section>
